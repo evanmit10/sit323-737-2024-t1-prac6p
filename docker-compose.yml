@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    image: emitro89/nodewebapp2
+    ports:
+      - '17869:3040'
+    environment:
+      - PORT=17869
+    container_name: test
+    networks:
+      - my-bridge-network
+
+  app1:
+    build: .
+    image: emitro89/nodewebapp2
+    ports:
+      - '17870:3040'
+    environment:
+      - PORT=17870
+    container_name: test123
+    networks:
+      - my-bridge-network
+
+
+
+networks:
+  my-bridge-network:
+    driver: bridge
